@@ -30,7 +30,8 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/Vim-Jinja2-Syntax'
 Plug 'Valloric/python-indent'
 Plug 'Valloric/vim-operator-highlight'
-Plug 'Valloric/vim-valloric-colorscheme'
+Plug 'vim-scripts/peaksea'
+Plug 'altercation/vim-colors-solarized'
 Plug 'Valloric/xmledit'
 Plug 'vim-scripts/YankRing.vim'
 " Seems more active than tpope/vim-surround
@@ -142,7 +143,7 @@ set spellfile=$HOME/dotfiles/vim/spell/en.latin1.add
 " TODO: transfer all our custom mapping to our vim_shortcuts file
 
 " DISPLAY SETTINGS
-colorscheme valloric    " sets the colorscheme
+colorscheme peaksea    " sets the colorscheme
 set background=dark     " enable for dark terminals
 set scrolloff=2         " 2 lines above/below cursor when scrolling
 set showmatch           " show matching bracket (briefly jump)
@@ -161,7 +162,8 @@ set winaltkeys=no       " turns of the Alt key bindings to the gui menu
 set wildmode=longest,list,full
 set wildmenu            " completion with menu
 " This changes the default display of tab and CR chars in list mode
-set listchars=tab:▸\ ,eol:¬
+set list listchars=eol:~,tab:>.,trail:~,extends:>,precedes:<
+
 
 " The "longest" option makes completion insert the longest prefix of all
 " the possible matches; see :h completeopt
@@ -549,15 +551,15 @@ nnoremap N Nzzzv
 nnoremap g; g;zz
 nnoremap g, g,zz
 
-" In normal mode, we use : much more often than ; so lets swap them.
-" WARNING: this will cause any "ordinary" map command without the "nore" prefix
-" that uses ":" to fail. For instance, "map <f2> :w" would fail, since vim will
-" read ":w" as ";w" because of the below remappings. Use "noremap"s in such
-" situations and you'll be fine.
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+" " In normal mode, we use : much more often than ; so lets swap them.
+" " WARNING: this will cause any "ordinary" map command without the "nore" prefix
+" " that uses ":" to fail. For instance, "map <f2> :w" would fail, since vim will
+" " read ":w" as ";w" because of the below remappings. Use "noremap"s in such
+" " situations and you'll be fine.
+" nnoremap ; :
+" nnoremap : ;
+" vnoremap ; :
+" vnoremap : ;
 
 " This makes j and k work on "screen lines" instead of on "file lines"; now, when
 " we have a long line that wraps to multiple screen lines, j and k behave as we
@@ -919,7 +921,7 @@ nnoremap <F4> :TagbarToggle<cr><c-w>=
 
 " vimpager is actually not a plugin but a shell file
 " https://github.com/rkitover/vimpager
-let vimpager_use_gvim = 1
+let vimpager_use_gvim = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               delimitMate                               "
@@ -1004,6 +1006,7 @@ let g:ycm_min_num_identifier_candidate_chars = 4
 let g:ycm_extra_conf_globlist = ['~/repos/*']
 let g:ycm_filetype_specific_completion_to_disable = {'javascript': 1}
 let g:ycm_rust_src_path = $HOME . '/repos/rust/src'
+let g:ycm_clangd_binary_path = '/opt/clang/bin/clangd'
 
 " Also see the 'pumheight' vim option!
 let g:ycm_max_num_identifier_candidates = 10

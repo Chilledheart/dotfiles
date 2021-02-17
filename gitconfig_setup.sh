@@ -1,16 +1,16 @@
 #!/bin/bash
 
-git config --global user.name "Val Markovic"
+git config --global user.name "Chilledheart"
 
 current_email=$(git config --global --get user.email)
 
 # if current_email is empty, then add an email
 if [[ -z "$current_email" ]]
 then
-    git config --global user.email "val@markovic.io"
+    git config --global user.email "rwindz0@gmail.com"
 fi
 
-git config --global github.user valloric
+git config --global github.user chilledheart
 
 git config --global alias.st status
 git config --global alias.co checkout
