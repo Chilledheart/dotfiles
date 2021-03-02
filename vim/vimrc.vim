@@ -46,8 +46,7 @@ Plug 'godlygeek/tabular'
 " For markdown preview; call :Preview to open rendered in browser
 " Plug 'greyblake/vim-preview'
 Plug 'groenewege/vim-less'
-Plug '~/.fzf'
-" Requires fzf installed in ~/.fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Also works nicer if 'bat' is installed (for file preview syntax highlight)
 " See our zshrc for our fzf default options
 Plug 'junegunn/fzf.vim'
