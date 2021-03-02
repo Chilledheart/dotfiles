@@ -121,6 +121,7 @@ then
 fi
 
 $script_dir/gitconfig_setup.sh
+$script_dir/osx/osx_setup.sh
 $script_dir/tmux/tmux_setup.sh
 $script_dir/urxvt/urxvt_setup.sh
 $script_dir/intellij/intellij_setup.sh
