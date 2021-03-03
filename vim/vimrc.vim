@@ -8,6 +8,14 @@ let at_google = filereadable( google_path )
 " Setup vim-plug
 call plug#begin('~/.vim/plugged')
 
+" Disable python2/dyn
+set pythondll=/dev/null
+
+" Correct python3/dyn
+" https://github.com/macvim-dev/macvim/wiki/Python-2.x-and-Python-3.x
+" set pythonthreehome=/Library/Frameworks/Python.framework/Versions/3.9
+set pythonthreedll=/Library/Frameworks/Python.framework/Versions/3.9/lib/libpython3.9.dylib
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Vundle configuration                           "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -24,7 +32,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
 Plug 'Raimondi/delimitMate'
 Plug 'vim-scripts/Rename'
-Plug 'SirVer/ultisnips'
+if has('python3')
+  Plug 'SirVer/ultisnips'
+endif
 Plug 'Valloric/ListToggle'
 Plug 'Valloric/MatchTagAlways'
 Plug 'Valloric/Vim-Jinja2-Syntax'
@@ -96,7 +106,7 @@ Plug 'xolox/vim-notes'
 Plug 'xolox/vim-pyref'
 Plug 'xolox/vim-session'
 
-if !at_google
+if has('python3')
   Plug 'ycm-core/YouCompleteMe'
 endif
 
